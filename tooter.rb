@@ -42,6 +42,8 @@ if new_tweets.any?
       visibility: "public"
     )
     puts "  Created status: #{status.uri}"
+
+    redis.set("LAST_TWEET", t.uri)
   end
 else
   puts "  No new tweets."
